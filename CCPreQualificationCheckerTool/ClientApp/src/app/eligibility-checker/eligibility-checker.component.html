@@ -1,0 +1,50 @@
+<h1>Eligibility Checker</h1>
+<form (ngSubmit)="onSubmit()" #eligibilityCheckerForm="ngForm">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" class="form-control" id="firstName"
+           required
+           [(ngModel)]="eligibilityCheckerModel.firstName" name="firstName"
+           #firstName="ngModel">
+    <div [hidden]="firstName.valid || firstName.pristine"
+         class="alert alert-danger">
+      First Name is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" class="form-control" id="lastName"
+           required
+           [(ngModel)]="eligibilityCheckerModel.lastName" name="lastName"
+           #lastName="ngModel">
+    <div [hidden]="lastName.valid || lastName.pristine"
+         class="alert alert-danger">
+      Last Name is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="dateofBirth">Date of Birth</label>
+    <input type="date" class="form-control" id="dateofBirth"
+           required
+           [(ngModel)]="eligibilityCheckerModel.dateofBirth" name="dateofBirth"
+           #dateofBirth="ngModel">
+    <div [hidden]="dateofBirth.valid || dateofBirth.pristine"
+         class="alert alert-danger">
+      Date of Birth is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="annualIncome">Annual Income</label>
+    <input type="number" class="form-control" id="annualIncome"
+           required
+           [(ngModel)]="eligibilityCheckerModel.annualIncome" name="annualIncome"
+           #annualIncome="ngModel">
+    <div [hidden]="annualIncome.valid || annualIncome.pristine"
+         class="alert alert-danger">
+      Annual Income is required
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!eligibilityCheckerForm.form.valid">Submit</button>
+  <button type="button" class="btn btn-default" (click)="reset(); eligibilityCheckerForm.reset()">Clear</button>
+</form>
+
