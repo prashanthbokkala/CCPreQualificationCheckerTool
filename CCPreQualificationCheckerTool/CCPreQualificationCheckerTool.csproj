@@ -41,21 +41,24 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\eligibility-checker\eligibility-checker.component.ts" />
+    <None Remove="ClientApp\src\app\eligible-cards\eligible-cards.component.ts" />
+    <None Remove="ClientApp\src\app\models\CustomerCeditCardDetailsModel.ts" />
     <None Remove="ClientApp\src\app\models\CustomerDetailsModel.ts" />
     <None Remove="ClientApp\src\app\models\EligibilityCheckerModel.ts" />
+    <None Remove="ClientApp\src\app\not-eligible\not-eligible.component.ts" />
     <None Remove="ClientApp\src\app\service\api.service.ts" />
+    <None Remove="ClientApp\src\app\utility\mapper.ts" />
+    <None Remove="ClientApp\src\app\utility\store-data.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BusinessControl\BusinessControl.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Utility\Utilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\eligibility-checker\eligibility-checker.component.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\app\utility\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

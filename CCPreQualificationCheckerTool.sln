@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCPreQualificationCheckerTo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{C93ACC62-818D-427E-A7C9-06CB987D9106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessControl", "BusinessControl\BusinessControl.csproj", "{26D4EC0B-66DA-4905-BE7F-58A0F7996015}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessControl", "BusinessControl\BusinessControl.csproj", "{26D4EC0B-66DA-4905-BE7F-58A0F7996015}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessControl", "DataAccessControl\DataAccessControl.csproj", "{DDDF6E6E-145B-446F-9A5E-E7A2C2F2E4F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessControl", "DataAccessControl\DataAccessControl.csproj", "{DDDF6E6E-145B-446F-9A5E-E7A2C2F2E4F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utility\Utilities.csproj", "{0B27DD3D-B82E-4571-8651-B830CCB58A6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DDDF6E6E-145B-446F-9A5E-E7A2C2F2E4F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDDF6E6E-145B-446F-9A5E-E7A2C2F2E4F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDDF6E6E-145B-446F-9A5E-E7A2C2F2E4F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B27DD3D-B82E-4571-8651-B830CCB58A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B27DD3D-B82E-4571-8651-B830CCB58A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B27DD3D-B82E-4571-8651-B830CCB58A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B27DD3D-B82E-4571-8651-B830CCB58A6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

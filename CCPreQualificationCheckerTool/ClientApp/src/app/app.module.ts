@@ -10,6 +10,9 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { EligibilityCheckerComponent } from './eligibility-checker/eligibility-checker.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { NotEligibleComponent } from './not-eligible/not-eligible.component';
+import { EligibleCardsComponent } from './eligible-cards/eligible-cards.component';
+import { StoreData } from './utility/store-data';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     HomeComponent,
     CounterComponent,
     EligibilityCheckerComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    NotEligibleComponent,
+    EligibleCardsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,9 +34,11 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
       { path: 'counter', component: CounterComponent },
       { path: 'eligibility-checker', component: EligibilityCheckerComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'not-eligible', component: NotEligibleComponent },
+      { path: 'eligible-cards', component: EligibleCardsComponent },
     ])
   ],
-  providers: [],
+  providers: [StoreData],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

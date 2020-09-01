@@ -29,23 +29,33 @@ export class ApiService {
   //  return throwError(errorMessage);
   //}
 
-  postData(serviceApi: any, params?: any): Observable<any> {
-    let requestPayLoad: HttpParams = new HttpParams();
-    //requestPayLoad = requestPayLoad.append('API', serviceApi);
-    requestPayLoad = requestPayLoad.append('Params', JSON.stringify(params));
+  //postData(serviceApi: any, params?: any): Observable<any> {
+  //  let requestPayLoad: HttpParams = new HttpParams();
+  //  //requestPayLoad = requestPayLoad.append('API', serviceApi);
+  //  requestPayLoad = requestPayLoad.append('Params', JSON.stringify(params));
 
-    const requestOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded',
-      })
-    };
+  //  const requestOptions = {
+  //    headers: new HttpHeaders({
+  //      'Content-Type': 'application/x-www-form-urlencoded',
+  //    })
+  //  };
+  //  let urlll = this.baseUrll + serviceApi;
+  //  return this.httpClient.post(serviceApi, requestPayLoad.toString(), requestOptions).pipe(
+  //    catchError(error => {
+  //      return throwError(error);
+  //    }));
+  //}
+
+  postData(postData, serviceApi: any): Observable<any> {
     let urlll = this.baseUrll + serviceApi;
-    return this.httpClient.post(serviceApi, requestPayLoad.toString(), requestOptions).pipe(
-      catchError(error => {
-        return throwError(error);
-      }));
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.httpClient.post(urlll,
+      JSON.stringify(postData), { responseType: 'json', headers });
   }
-
+  getData(serviceApi: any): Observable<any[]> {
+    let urlll = this.baseUrll + serviceApi;
+    return this.httpClient.get(urlll) as Observable<any[]>;
+  }
   //getData(serviceApi: any, params?: any): Observable<any> {
 
 

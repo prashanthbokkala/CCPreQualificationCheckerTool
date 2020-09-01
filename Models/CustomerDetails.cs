@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class CustomerDetails : BaseEntity
+    public class CustomerDetails
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -36,7 +36,18 @@ namespace Models
         public decimal AnnualIncome { get; set; }
 
         [ForeignKey("CreditCardDetails")]
-        public int CardRefId { get; set; }
+        public int? CardRefId { get; set; }
         public CreditCardDetails CreditCardDetails { get; set; }
+
+        [Column("CreatedDate")]
+        [DataType(DataType.DateTime)]
+        public DateTime? CreatedDate { get; set; }
+        [Column("CreatedBy")]
+        public string CreatedBy { get; set; }
+        [Column("UpdatedDate")]
+        [DataType(DataType.DateTime)]
+        public DateTime? UpdatedDate { get; set; }
+        [Column("UpdatedBy")]
+        public string UpdatedBy { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class CreditCardDetails : BaseEntity
+    public class CreditCardDetails
     {
         
         [Key]
@@ -31,12 +31,10 @@ namespace Models
         public int AgeLimit { get; set; }
 
         [Required]
-        [DataType(DataType.Currency)]
         [Column("MinAnnualIncome")]
         public decimal MinAnnualIncome { get; set; }
 
         [Required]
-        [DataType(DataType.Custom)]
         [Column("APR")]
         public decimal APR { get; set; }
 
@@ -48,5 +46,16 @@ namespace Models
         [Required]
         [Column("Image")]
         public string Image { get; set; }
+
+        [Column("CreatedDate")]
+        [DataType(DataType.DateTime)]
+        public DateTime? CreatedDate { get; set; }
+        [Column("CreatedBy")]
+        public string CreatedBy { get; set; }
+        [Column("UpdatedDate")]
+        [DataType(DataType.DateTime)]
+        public DateTime? UpdatedDate { get; set; }
+        [Column("UpdatedBy")]
+        public string UpdatedBy { get; set; }
     }
 }

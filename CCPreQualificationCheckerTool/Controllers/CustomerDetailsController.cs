@@ -4,121 +4,95 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace CCPreQualificationCheckerTool.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CustomerDetailsController : ControllerBase
+    [Route("api/CustomerDetails/")]
+    public class CustomerDetailsController : Controller
     {
-        private readonly AppDbContext _context;
-
-        public CustomerDetailsController(AppDbContext context)
+        // GET: CustomerDetailsController
+        public ActionResult Index()
         {
-            _context = context;
+            return View();
         }
 
-        // GET: api/CustomerDetails
+        [Route("getCustomerDetails")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CustomerDetails>>> GetCustomers()
+        public IEnumerable<CustomerDetails> GetCustomerDetails()
         {
-            return await _context.Customers.ToListAsync();
+            List<CustomerDetails> customerDetailsList = new List<CustomerDetails>();
+            lstdept = obj.GetDepartmentDetails();
+            return lstdept;
         }
 
-        // GET: api/CustomerDetails/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<CustomerDetails>> GetCustomerDetails(int id)
+        // GET: CustomerDetailsController/Details/5
+        public ActionResult Details(int id)
         {
-            var customerDetails = await _context.Customers.FindAsync(id);
-
-            if (customerDetails == null)
-            {
-                return NotFound();
-            }
-
-            return customerDetails;
+            return View();
         }
 
-        // PUT: api/CustomerDetails/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCustomerDetails(int id, CustomerDetails customerDetails)
+        // GET: CustomerDetailsController/Create
+        public ActionResult Create()
         {
-            if (id != customerDetails.CustomerId)
-            {
-                return BadRequest();
-            }
+            return View();
+        }
 
-            _context.Entry(customerDetails).State = EntityState.Modified;
-
+        // POST: CustomerDetailsController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(IFormCollection collection)
+        {
             try
             {
-                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            catch (DbUpdateConcurrencyException)
+            catch
             {
-                if (!CustomerDetailsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return View();
             }
-
-            return NoContent();
         }
 
-        // POST: api/CustomerDetails
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPost]
-        //public async Task<ActionResult<CustomerDetails>> PostCustomerDetails(CustomerDetails customerDetails)
-        //{
-        //    _context.Customers.Add(customerDetails);
-        //    await _context.SaveChangesAsync();
+        // GET: CustomerDetailsController/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
 
-        //    return CreatedAtAction("GetCustomerDetails", new { id = customerDetails.CustomerId }, customerDetails);
-        //}
-
+        // POST: CustomerDetailsController/Edit/5
         [HttpPost]
-        public async Task<IActionResult> PostCustomerDetails([FromBody] CustomerDetails customerDetails)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IFormCollection collection)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                return RedirectToAction(nameof(Index));
             }
-
-            _context.Customers.Add(customerDetails);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetEmployee", new { id = customerDetails.CustomerId }, customerDetails);
+            catch
+            {
+                return View();
+            }
         }
 
-
-        // DELETE: api/CustomerDetails/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<CustomerDetails>> DeleteCustomerDetails(int id)
+        // GET: CustomerDetailsController/Delete/5
+        public ActionResult Delete(int id)
         {
-            var customerDetails = await _context.Customers.FindAsync(id);
-            if (customerDetails == null)
-            {
-                return NotFound();
-            }
-
-            _context.Customers.Remove(customerDetails);
-            await _context.SaveChangesAsync();
-
-            return customerDetails;
+            return View();
         }
 
-        private bool CustomerDetailsExists(int id)
+        // POST: CustomerDetailsController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
         {
-            return _context.Customers.Any(e => e.CustomerId == id);
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }
